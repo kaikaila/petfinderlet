@@ -18,13 +18,15 @@ const AnimalCard = ({ animal }) => {
     toggleFavorite(animal);
   };
 
+  const defaultImage = "../../assets/img-animal-default.png"
+
   return (
     <div className="animal-card" onClick={handleCardClick} style={{ cursor: "pointer", position: "relative" }}>
       {/* Animal Image */}
       <img 
         className="animal-card-image"
-        src={animal.picture} 
-        alt={animal.name} 
+        src={animal.picture || defaultImage} 
+        alt={animal.name || "Animal"} 
         style={{ width: "100%" }} 
       />
 
