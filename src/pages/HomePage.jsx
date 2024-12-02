@@ -37,21 +37,29 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* Button to navigate to SavedPage */}
-      <Link to="/saved" style={{ textDecoration: "none", margin: "20px" }}>
-        <button style={{ padding: "10px 20px", cursor: "pointer" }}>
-          View Saved Animals
-        </button>
-      </Link>
+
+      {/* Top Bar: Logo, Search Bar, and View Saved Animals Button */}
+      <div className="top-bar">
+        {/* Left Section: Logo and Search Bar */}
+        <div className="logo-search-container">
+          <a href="/" id="logo-link">
+            <img id="logo-icon" src="../../assets/logo.png" alt="logo" />
+          </a>
+          
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        </div>
+
+        {/* Right Section: Saved Animals Button */}
+        <Link to="/saved" className="view-saved-btn">
+          <img src="../../assets/icon-heart.png" alt="Saved" className="icon-heart" />
+          Saved animals
+        </Link>
+      </div>
 
       {/* Filter Component */}
       <Filters filter={filter} setFilter={setFilter} handleFilterChange={setFilter} />
 
-      {/* Search Bar Component */}
-      <SearchBar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
+      
 
       {/* Animal Cards or No Results Message */}
       <div className="animal-list">
@@ -72,14 +80,13 @@ const HomePage = () => {
             />
           ))
         ) : (
-          <div style={{ textAlign: "center", marginTop: "50px" }}>
+          <div className="no-results-container">
             <img
               id="paw-icon"
               src="../../assets/illustration-paw.png" 
               alt="No results"
-              style={{ width: "50px", height: "50px" }}
             />
-            <p style={{ fontSize: "18px", fontWeight: "bold" }}>No results found</p>
+            <p>No results found</p>
           </div>
         )}
       </div>

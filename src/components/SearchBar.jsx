@@ -6,20 +6,23 @@ const SearchBar = ({
 }) => {
   return (
     <>
-    <img id="logo-icon" src="../../assets/logo.png" alt="logo" />
     <div className="search-bar">
       <input
         type="text"
-        placeholder="Search by breed, size, or age"
+        placeholder="Search"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="search-input"
       />
-      <img
-        id="search-icon"
-        src="../../assets/icon-search.png" 
-        alt="Search"
-      />
+      <div className="search-icon-container">
+        <img
+          id="search-icon"
+          src="../../assets/image-search-btn.png" 
+          alt="Search"
+          className="search-btn-icon"
+        />
+      </div>
+      
     </div>
     </>
     

@@ -21,37 +21,45 @@ const AnimalCard = ({ animal }) => {
   return (
     <div className="animal-card" onClick={handleCardClick} style={{ cursor: "pointer", position: "relative" }}>
       {/* Animal Image */}
-      <img src={animal.picture} alt={animal.name} style={{ width: "100%" }} />
+      <img 
+        className="animal-card-image"
+        src={animal.picture} 
+        alt={animal.name} 
+        style={{ width: "100%" }} 
+      />
 
       {/* Heart Icon */}
       <button
         onClick={handleFavoriteClick}
         style={{
           position: "absolute",
-          top: "10px",
-          right: "10px",
+          top: "16px",
+          right: "16px",
           background: "none",
           border: "none",
           cursor: "pointer",
         }}
       >
         <img
+          className="favorite-icon"
           src={isFavorited ? "../../assets/icon-save-on.png" : "../../assets/icon-save-off.png"}
           alt="Favorite"
-          style={{ width: "30px", height: "30px" }}
+          style={{ width: "32px", height: "32px" }}
         />
       </button>
 
       {/* Animal Details */}
       <h3>{animal.name}</h3>
-      <p>Age: {animal.age}</p>
-      <p>Sex: {animal.sex}</p>
-      <p>Species: {animal.species}</p>
-      <p>Breed: {animal.breed}</p>
-      <p>Size: {animal.size}</p>
+      <p>Age: {animal.age ? animal.age : "/"}</p>
+      <p>Sex: {animal.sex ? animal.sex : "/"}</p>
+      <p>Species: {animal.species ? animal.species : "/"}</p>
+      <p>Breed: {animal.breed ? animal.breed : "/"}</p>
+      <p>Size: {animal.size ? animal.size : "/"}</p>
+
     </div>
   );
 };
+
 
 export default AnimalCard;
 

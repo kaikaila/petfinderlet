@@ -9,30 +9,27 @@ const SavedPage = () => {
   if (favorites.length === 0) {
     return (
       <div>
-        <p>No saved animals yet!</p>
-        <Link to="/" style={{ textDecoration: "none", margin: "20px" }}>
-          <button style={{ padding: "10px 20px", cursor: "pointer" }}>
-            Back to Homepage
-          </button>
+        <Link to="/" className="back-home-btn">
+          <img src="../../assets/icon-back.png" alt="Back" className="back-icon" />
+          Back to Home
         </Link>
+        <p>No saved animals yet!</p>
       </div>
     );
   }
 
   return (
-    <div>
-      <h1>Saved Animals</h1>
-      <Link to="/" style={{ textDecoration: "none", margin: "20px" }}>
-        <button style={{ padding: "10px 20px", cursor: "pointer" }}>
-          Back to Homepage
-        </button>
-      </Link>
+    <div className="saved-page">
+      <div className="saved-header">
+        <Link to="/" className="back-home-btn">
+          <img src="../../assets/icon-back.png" alt="Back" className="back-icon" />
+          Back to Home
+        </Link>
+        <h1 className="saved-title">Saved animals</h1>
+      </div>
       <div className="animal-list">
         {favorites.map((animal) => (
-          <div key={animal.id}>
-            <AnimalCard animal={animal} />
-      
-          </div>
+          <AnimalCard key={animal.id} animal={animal} />
         ))}
       </div>
     </div>
