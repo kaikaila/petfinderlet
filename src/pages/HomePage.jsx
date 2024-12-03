@@ -80,14 +80,14 @@ const HomePage = () => {
             />
           ))
         ) : (
-          <div className="no-results-container">
-            <img
-              id="paw-icon"
-              src="../../assets/illustration-paw.png" 
-              alt="No results"
-            />
-            <p>No results found</p>
-          </div>
+      <div className="no-results-container">
+        <img
+          id="paw-icon"
+          src="../../assets/img-no-results.png" 
+          alt="No results"
+        />
+        <p>No results found</p>
+      </div>
         )}
       </div>
     </div>

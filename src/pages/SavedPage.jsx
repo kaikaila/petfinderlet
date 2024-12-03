@@ -13,7 +13,15 @@ const SavedPage = () => {
           <img src="../../assets/icon-back.png" alt="Back" className="back-icon" />
           Back to Home
         </Link>
-        <p>No saved animals yet!</p>
+        <h1 className="saved-title">Saved animals</h1>
+        <div className="no-saved-item-container">
+            <img
+              id="paw-icon"
+              src="../../assets/img-no-results.png" 
+              alt="No results"
+            />
+            <p>No animals saved yet</p>
+          </div>
       </div>
     );
   }
