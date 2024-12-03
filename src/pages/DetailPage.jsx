@@ -1,18 +1,28 @@
-import React, { useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useParams } from "react-router-dom";
 import { AnimalContext } from "../context/AnimalContext";
 
 const DetailPage = () => {
-  const { animals, favorites, toggleFavorite } = useContext(AnimalContext);
+  const { animals, favorites, toggleFavorite} = useContext(AnimalContext);
   const { id } = useParams();
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Wait for animals to be loaded before setting loading to false
+  useEffect(() => {
+    if (animals.length > 0) {
+      setIsLoading(false);
+    }
+  }, [animals]);
   const selectedAnimal = animals.find((animal) => animal.id === id);
 
-  const goBack = () => navigate(-1);
-
   if (!selectedAnimal) {
-    return <p>Animal not found!</p>;
+    return (
+      <div className="not-found">
+        <h2>Loading</h2>
+        {/* <Link to="/">Back to Home</Link> */}
+      </div>
+    );
   }
 
   const {
@@ -35,56 +45,61 @@ const DetailPage = () => {
   const isFavorited = favorites.some((fav) => fav.id === id);
 
   return (
-    <main id="detail-page">
-      <button onClick={goBack} style={{ margin: "20px" }}>
-        Back to Homepage
-      </button>
-      <header id="detail-header" style={{ position: "relative" }}>
-        <h1>{name}</h1>
-        <img
-          id="detail-pic"
-          src={picture}
-          alt={name}
-          style={{ width: "300px", height: "300px", borderRadius: "10px" }}
-        />
-        {/* Single Heart Button */}
-        <button
-          onClick={() => toggleFavorite(selectedAnimal)}
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          <img
-            src={isFavorited ? "../../assets/icon-save-on.png" : "../../assets/icon-save-off.png"}
-            alt="Favorite"
-            style={{ width: "30px", height: "30px" }}
-          />
-        </button>
-      </header>
-      <section id="detail-info">
-        <p>Age: {age}</p>
-        <p>Sex: {sex}</p>
-        <p>Species: {species}</p>
-        <p>Breed: {breed}</p>
-        <p>Size: {size}</p>
-        <p>Activity Level: {activityLevel}</p>
-        <p>Adoption Fee: {adoptionFeeString ? `$${adoptionFeeString}` : "N/A"}</p>
-        <p>Good with Kids: {isKidsOk ? "Yes" : "No"}</p>
-        <p>Vaccinated: {vaccinated ? "Yes" : "No"}</p>
-        <p>Description:</p>
-        <div dangerouslySetInnerHTML={{ __html: descriptionHTML || "N/A" }} />
-        {url && (
-          <a href={url} target="_blank" rel="noopener noreferrer">
-            View Adoption Details
-          </a>
-        )}
-      </section>
-    </main>
+    <div className="detail-page">
+
+      <div className="detail-header">
+        {/* Left side of header: back home button */}
+        <Link to="/" className="back-home-btn">
+          <img src="../../assets/icon-back.png" alt="Back" className="back-icon" />
+          Back to Home
+        </Link>
+        {/* Right side of header: saved animals button */}
+        <Link to="/saved" className="view-saved-btn">
+          <img src="../../assets/icon-heart.png" alt="Saved" className="icon-heart" />
+          Saved animals
+        </Link>
+      </div>
+
+      <div className="container">
+        <div className="detail-container">
+          <img id="detail-pic" src={picture} alt={name} />
+          <div className="detail-in-container">
+            <div className="name-and-save">
+              <h1>{name}</h1>
+              <button
+                onClick={() => toggleFavorite(selectedAnimal)}
+              >
+              <img
+                src={isFavorited ? "../../assets/icon-save-on.png" : "../../assets/icon-heart.png"}
+                alt="Favorite"
+              />
+              </button>
+            </div>
+            <div id="detail-info">
+              <p><span className="detail-label">Age:</span> {age}</p>
+              <p><span className="detail-label">Sex:</span> {sex}</p>
+              <p><span className="detail-label">Species:</span> {species}</p>
+              <p><span className="detail-label">Breed:</span> {breed}</p>
+              <p><span className="detail-label">Size:</span> {size}</p>
+              <p><span className="detail-label">Activity Level:</span> {activityLevel}</p>
+              <p><span className="detail-label">Good with Kids:</span> {isKidsOk ? "Yes" : "No"}</p>
+              <p><span className="detail-label">Vaccinated:</span> {vaccinated ? "Yes" : "No"}</p>
+              <p><span className="detail-label">Adoption Fee:</span> {adoptionFeeString ? `$${adoptionFeeString}` : "N/A"}</p>
+            </div>
+          </div>
+        </div>
+        <div className="description">
+          <h2><span>Description</span></h2>
+          <div dangerouslySetInnerHTML={{ __html: descriptionHTML || "N/A" }} />
+          {url && (
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              View Adoption Details
+            </a>
+          )}
+        </div>
+      </div>
+
+    </div>
   );
 };
 
