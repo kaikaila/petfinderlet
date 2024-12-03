@@ -20,7 +20,7 @@ const SavedPage = () => {
               src="../../assets/img-no-results.png" 
               alt="No results"
             />
-            <p>No animals saved yet.</p>
+            <p>No animals saved yet</p>
           </div>
       </div>
     );
