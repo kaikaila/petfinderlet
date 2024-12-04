@@ -26,7 +26,8 @@ const HomePage = () => {
         (animal.age?.toLowerCase() || "").includes(query) ||
         (animal.sex?.toLowerCase() || "").includes(query) ||
         (animal.breed?.toLowerCase() || "").includes(query) ||
-        (animal.size?.toLowerCase() || "").includes(query)
+        (animal.size?.toLowerCase() || "").includes(query) ||
+        (animal.species?.toLowerCase() || "").includes(query)
       );
     }
     return true; // Show all if no search query
