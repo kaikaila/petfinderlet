@@ -47,6 +47,7 @@ const DetailPage = () => {
   return (
     <div className="detail-page">
 
+      {/* Detail Header */}
       <div className="detail-header">
         {/* Left side of header: back home button */}
         <Link to="/" className="back-home-btn">
@@ -60,6 +61,7 @@ const DetailPage = () => {
         </Link>
       </div>
 
+      {/* Container with content */}
       <div className="container">
         <div className="detail-container">
           <img id="detail-pic" src={picture} alt={name} />
@@ -76,12 +78,12 @@ const DetailPage = () => {
               </button>
             </div>
             <div id="detail-info">
-              <p><span className="detail-label">Age:</span> {age}</p>
-              <p><span className="detail-label">Sex:</span> {sex}</p>
-              <p><span className="detail-label">Species:</span> {species}</p>
-              <p><span className="detail-label">Breed:</span> {breed}</p>
-              <p><span className="detail-label">Size:</span> {size}</p>
-              <p><span className="detail-label">Activity Level:</span> {activityLevel}</p>
+              <p><span className="detail-label">Age:</span> {age ? age : "N/A"}</p>
+              <p><span className="detail-label">Sex:</span> {sex ? sex : "N/A"}</p>
+              <p><span className="detail-label">Species:</span> {species ? species : "N/A"}</p>
+              <p><span className="detail-label">Breed:</span> {breed ? breed : "N/A"}</p>
+              <p><span className="detail-label">Size:</span> {size ? size : "N/A"}</p>
+              <p><span className="detail-label">Activity Level:</span> {activityLevel ? activityLevel : "N/A"}</p>
               <p><span className="detail-label">Good with Kids:</span> {isKidsOk ? "Yes" : "No"}</p>
               <p><span className="detail-label">Vaccinated:</span> {vaccinated ? "Yes" : "No"}</p>
               <p><span className="detail-label">Adoption Fee:</span> {adoptionFeeString ? `$${adoptionFeeString}` : "N/A"}</p>
@@ -89,7 +91,7 @@ const DetailPage = () => {
           </div>
         </div>
         <div className="description">
-          <h2><span>Description</span></h2>
+          <h2><span>About</span></h2>
           <div dangerouslySetInnerHTML={{ __html: descriptionHTML || "N/A" }} />
           {url && (
             <a href={url} target="_blank" rel="noopener noreferrer">
