@@ -1,5 +1,7 @@
 **Team name**: MACY
+
 **Members**: Anita Guo, Casey Hou, Michelle Lin, Yunkai Li
+
 **What was your original goal and how much of it were you able to achieve?**
 Our goal is to build a React-based Animal Adoption web app using the Petfinder API. Users can search for adoptable pets with features like searching by type, breed, age, and size, as well as letting users save their favorites pets for future reference.
 
