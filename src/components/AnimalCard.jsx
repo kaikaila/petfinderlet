@@ -52,11 +52,11 @@ const AnimalCard = ({ animal }) => {
 
       {/* Animal Details */}
       <h3>{animal.name}</h3>
-      <p>Age: {animal.age ? animal.age : "/"}</p>
-      <p>Sex: {animal.sex ? animal.sex : "/"}</p>
-      <p>Species: {animal.species ? animal.species : "/"}</p>
-      <p>Breed: {animal.breed ? animal.breed : "/"}</p>
-      <p>Size: {animal.size ? animal.size : "/"}</p>
+      <p>Age: {animal.age ? animal.age : "N/A"}</p>
+      <p>Sex: {animal.sex ? animal.sex : "N/A"}</p>
+      <p>Species: {animal.species ? animal.species : "N/A"}</p>
+      <p>Breed: {animal.breed ? animal.breed : "N/A"}</p>
+      <p>Size: {animal.size ? animal.size : "N/A"}</p>
 
     </div>
   );
