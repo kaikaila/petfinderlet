@@ -420,12 +420,12 @@ button {
 
 /* Adjust logo and search bar for screen width < 768px */
 @media (max-width: 768px) {
+  
   .animal-list {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 24px;
   }
-}
-
+  
   .search-bar {
     width: auto;
   }
@@ -437,7 +437,7 @@ button {
   .logo-search-container {
     gap: 16px;
   }
-
+}
   
 /* Adjust grid layout for screen width < 400px */
 @media (max-width: 400px) {
